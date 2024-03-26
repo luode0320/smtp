@@ -50,12 +50,12 @@ jobs:
             docker rm smtp-9
             docker rmi luode0320/smtp:latest
             docker pull luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-1 -p 1001:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-2 -p 1002:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-3 -p 1003:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-4 -p 1004:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-5 -p 1005:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-6 -p 1006:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-7 -p 1007:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-8 -p 1008:25 luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-9 -p 1009:25 luode0320/smtp:latest
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-1 -p 1001:25 luode0320/smtp:latest  exim -bd -q1m -v 
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-2 -p 1002:25 luode0320/smtp:latest  exim -bd -q1m -v
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-3 -p 1003:25 luode0320/smtp:latest  exim -bd -q1m -v
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-4 -p 1004:25 luode0320/smtp:latest  exim -bd -q1m -v
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-5 -p 1005:25 luode0320/smtp:latest  exim -bd -q1m -v
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-6 -p 1006:25 luode0320/smtp:latest  exim -bd -q1m -v
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-7 -p 1007:25 luode0320/smtp:latest  exim -bd -q1m -v
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-8 -p 1008:25 luode0320/smtp:latest  exim -bd -q1m -v
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-9 -p 1009:25 luode0320/smtp:latest  exim -bd -q1m -v
