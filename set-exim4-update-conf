@@ -10,7 +10,7 @@ while [ $# -gt 0 ]; do
 	shift 2
 
 	if ! grep -qE "^#?${key}=" "$conf"; then
-		echo >&2 "error: '$key' not found in '$conf'"
+		echo >&2 "错误: '$key' 没有找到 '$conf'"
 		exit 1
 	fi
 

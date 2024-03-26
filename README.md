@@ -1,45 +1,40 @@
 # Docker-SMTP
 [![](https://images.microbadger.com/badges/image/namshi/smtp.svg)](https://microbadger.com/images/namshi/smtp)
 
-This is a SMTP docker container for sending emails. You can also relay emails to gmail and amazon SES.
+这是一个用于发送电子邮件的 SMTP docker 容器。您还可以将电子邮件中继到 gmail 和 amazon SES。
 
-## Environment variables
+## 环境变量
 
-The container accepts `RELAY_NETWORKS` environment variable which *MUST* start with `:` e.g `:192.168.0.0/24` or `:192.168.0.0/24:10.0.0.0/16`.
+容器接受必须以“：”开头的“RELAY_NETWORKS”环境变量，例如“：192.168.0.024”或“：192.168.0.024：10.0.0.016”。
 
-The container accepts `KEY_PATH` and `CERTIFICATE_PATH` environment variable that if provided will enable TLS support. The paths must be to the key and certificate file on a exposed volume. The keys will be copied into the container location.
+容器接受“KEY_PATH”和“CERTIFICATE_PATH”环境变量，如果提供这些变量，则将启用 TLS 支持。这些路径必须指向公开卷上的密钥和证书文件。密钥将复制到容器位置。
 
-The container accepts `MAILNAME` environment variable which will set the outgoing mail hostname.
+容器接受“MAILNAME”环境变量，该变量将设置传出邮件主机名。
 
-The container also accepts the `PORT` environment variable, to set the port the mail daemon will listen on inside the container. The default port is `25`.
+容器还接受“PORT”环境变量，以设置邮件守护程序将在容器内侦听的端口。默认端口为“25”。
 
-To configure the binding address, you can use `BIND_IP` and `BIND_IP6` environment variables. The default `BIND_IP` is `0.0.0.0`. The default `BIND_IP6` is `::0`.
+要配置绑定地址，您可以使用“BIND_IP”和“BIND_IP6”环境变量。默认的“BIND_IP”为“0.0.0.0”。默认的“BIND_IP6”为“：：0”。
 
-To disable IPV6 you can set the `DISABLE_IPV6` environment variable to any value.
+要禁用 IPV6，您可以将“DISABLE_IPV6”环境变量设置为任何值。
 
-The container accepts `OTHER_HOSTNAMES` environment variable which will set the list of domains for which this machine should consider itself the final destination.
+容器接受“OTHER_HOSTNAMES”环境变量，该变量将设置此计算机应将自己视为最终目标的域列表。
 
-## Below are scenarios for using this container
+## 下面是使用此容器的方案
 
-### As SMTP Server
-You don't need to specify any environment variable to get this up.
+### 作为 SMTP 服务器
+您无需指定任何环境变量即可实现此功能。
 
-### As a Secondary SMTP Server
-Specify 'RELAY_DOMAINS' to setup what domains should be accepted to forward to lower distance MX server.
+### 作为辅助 SMTP 服务器
+指定“RELAY_DOMAINS”以设置应接受哪些域以转发到距离较短的 MX 服务器。
 
-Format is `<domain1> : <domain2> : <domain3> etc`
+格式为 '<domain1> ： <domain2> ： <domain3> etc'
 
-### As Gmail Relay
-You need to set the `GMAIL_USER` and `GMAIL_PASSWORD` to be able to use it.
+### 作为 Gmail 中继
+您需要设置“GMAIL_USER”和“GMAIL_PASSWORD”才能使用它。
 
-### As Amazon SES Relay
-You need to set the `SES_USER` and `SES_PASSWORD` to be able to use it.<br/>
-You can override the SES region by setting `SES_REGION` as well.
-If you use Google Compute Engine you also should set `SES_PORT` to 2587.
-
-### As generic SMTP Relay
-You can also use any generic SMTP server with authentication as smarthost.</br>
-You need to set `SMARTHOST_ADDRESS`, `SMARTHOST_PORT` (connection parameters), `SMARTHOST_USER`, `SMARTHOST_PASSWORD` (authentication parameters), and `SMARTHOST_ALIASES`: this is a list of aliases to puth auth data for authentication, semicolon separated.</br>
+### 作为通用 SMTP 中继
+您还可以使用任何具有身份验证作为智能主机的通用 SMTP 服务器。</br>
+您需要设置 'SMARTHOST_ADDRESS'、'SMARTHOST_PORT'（连接参数）、'SMARTHOST_USER'、'SMARTHOST_PASSWORD'（身份验证参数）和 'SMARTHOST_ALIASES'：这是用于身份验证的 puth 身份验证数据的别名列表，分号分隔。<br>
 
 ```
 Example:
