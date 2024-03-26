@@ -59,4 +59,3 @@ jobs:
             docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-7 -p 1007:25 luode0320/smtp:latest
             docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-8 -p 1008:25 luode0320/smtp:latest
             docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts -v /etc/nginx/conf.d:/etc/nginx/conf.d --name smtp-9 -p 1009:25 luode0320/smtp:latest
-            systemctl restart nginx

@@ -8,7 +8,6 @@ RUN apt-get update && \
 
 COPY entrypoint.sh /bin/
 COPY set-exim4-update-conf /bin/
-COPY smtp.luode.vip.conf /etc/nginx/conf.d
 
 RUN chmod a+x /bin/entrypoint.sh && \
     chmod a+x /bin/set-exim4-update-conf
