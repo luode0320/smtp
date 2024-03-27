@@ -21,8 +21,8 @@ jobs:
       - name: 打包镜像, 上传 Docker Hub # 描述词, 无实际意义
         run: | # 当前服务器依次执行下面的命令
           echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login -u luode0320 --password-stdin
-          docker build -t luode0320/smtp:latest .
-          docker push luode0320/smtp:latest
+          docker build -t luode0320/smtp-emix:latest .
+          docker push luode0320/smtp-emix:latest
       - name: 登录服务器, 执行脚本 # 描述词, 无实际意义
         uses: appleboy/ssh-action@master # 通过SSH登录到远程服务器
         with:
@@ -34,7 +34,7 @@ jobs:
             docker stop smtp-2
             docker rm smtp-1
             docker rm smtp-2
-            docker rmi luode0320/smtp:latest
-            docker pull luode0320/smtp:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-1 -p 1001:25 luode0320/smtp:latest  exim -bd -q1m -v 
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-2 -p 1002:25 luode0320/smtp:latest  exim -bd -q1m -v 
+            docker rmi luode0320/smtp-emix:latest
+            docker pull luode0320/smtp-emix:latest
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-1 -p 1001:25 luode0320/smtp-emix:latest  exim -bd -q1m -v 
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-2 -p 1002:25 luode0320/smtp-emix:latest  exim -bd -q1m -v 
