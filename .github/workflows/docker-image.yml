@@ -30,11 +30,8 @@ jobs:
           username: root
           password: ${{ secrets.REMOTE_PASSWORD }}
           script: | # 远程服务器依次执行下面的命令, 删除容器, 删除镜像, 拉取最新镜像, 启动容器  
-            docker stop smtp-1
-            docker stop smtp-2
-            docker rm smtp-1
-            docker rm smtp-2
+            docker stop smtp
+            docker rm smtp
             docker rmi luode0320/smtp-emix:latest
             docker pull luode0320/smtp-emix:latest
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-1 -p 1001:25 luode0320/smtp-emix:latest  exim -bd -q1m -v 
-            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp-2 -p 1002:25 luode0320/smtp-emix:latest  exim -bd -q1m -v 
+            docker run --restart=always -d -e "RELAY_NETWORKS=:0.0.0.0/0" -v /etc/hosts:/etc/hosts --name smtp -p 1000:25 luode0320/smtp-emix:latest  exim -bd -q1m -v 
